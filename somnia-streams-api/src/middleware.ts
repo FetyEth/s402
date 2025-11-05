@@ -1,59 +1,25 @@
-// middleware.ts
-import { NextResponse } from "next/server";
-import type { NextRequest } from "next/server";
-import { settlePayment, facilitator } from "thirdweb/x402";
-import { createThirdwebClient } from "thirdweb";
-import { arbitrumSepolia } from "thirdweb/chains";
+import { paymentMiddleware, Network } from 'x402-next';
 
-const client = createThirdwebClient({
-  secretKey: process.env.THIRDWEB_SECRET_KEY as any,
-});
-
-const thirdwebFacilitator = facilitator({
-  client,
-  serverWalletAddress: "0x1234567890123456789012345678901234567890",
-});
-
-export async function middleware(request: NextRequest) {
-  const method = request.method.toUpperCase();
-  const resourceUrl = request.nextUrl.toString();
-  const paymentData = request.headers.get("x-payment");
-
-  const result = await settlePayment({
-    resourceUrl,
-    method,
-    paymentData,
-    payTo: "0x1234567890123456789012345678901234567890",
-    network: arbitrumSepolia,
-    price: "$0.01",
-    routeConfig: {
-      description: "Access to paid content",
-      mimeType: "application/json",
-      maxTimeoutSeconds: 300,
+// Configure the payment middleware
+export const middleware = paymentMiddleware(
+  "0x541cc10d295671697ff7e8c841af097ed0ea3802",
+  {
+    '/streams': {
+      price: '$0.01',
+      network: "base-sepolia",
+      config: {
+        description: 'Access to Somnia Streams API',
+      }
     },
-    facilitator: thirdwebFacilitator,
-  });
-
-  if (result.status === 200) {
-    // Payment successful, continue to the route
-    const response = NextResponse.next();
-    // Set payment receipt headers
-    for (const [key, value] of Object.entries(
-      result.responseHeaders,
-    )) {
-      response.headers.set(key, value);
-    }
-    return response;
+  },
+  {
+    url: "https://x402.org/facilitator", // Facilitator URL for Base Sepolia testnet.
   }
-
-  // Payment required
-  return NextResponse.json(result.responseBody, {
-    status: result.status,
-    headers: result.responseHeaders,
-  });
-}
+);
 
 // Configure which paths the middleware should run on
 export const config = {
-  matcher: ["/streams/:path*"],
+  matcher: [
+    '/streams/:path*',
+  ]
 };
