@@ -24,7 +24,7 @@ S402/
 
 ## Quickstart
 
-### 1️lone the Repository
+### clone the Repository
 
 ```bash
 git clone https://github.com/dhananjaypai08/S402.git
