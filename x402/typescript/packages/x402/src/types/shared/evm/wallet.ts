@@ -24,9 +24,9 @@ import {
   iotex,
   abstract,
   abstractTestnet,
-  story,
-  somniaTestnet
+  story
 } from "viem/chains";
+import { somnia } from "../../../customized-chains/chain";
 import { privateKeyToAccount } from "viem/accounts";
 import { Hex } from "viem";
 import { eip712WalletActions } from "viem/zksync";
@@ -231,7 +231,7 @@ export function getChainFromNetwork(network: string | undefined): Chain {
     case "iotex-testnet":
       return iotexTestnet;
     case "somnia":
-      return somniaTestnet;
+      return somnia;
     default:
       throw new Error(`Unsupported network: ${network}`);
   }

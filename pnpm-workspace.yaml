@@ -2,3 +2,4 @@ packages:
   - 'somnia-streams-api'
   - 'x402/typescript/packages/*'
   - 'x402/examples/typescript/*'
+  - 'streams-paywall'

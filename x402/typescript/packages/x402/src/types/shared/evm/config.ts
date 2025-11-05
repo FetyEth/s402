@@ -7,8 +7,8 @@ export const config: Record<string, ChainConfig> = {
     usdcName: "USDC",
   },
   "8453": {
-    usdcAddress: "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913",
-    usdcName: "USD Coin",
+    usdcAddress: "0x47636b3188774a3E7273D85A537b9bA4Ee7b2535",
+    usdcName: "SomniaOFT",
   },
   "43113": {
     usdcAddress: "0x5425890298aed601595a70AB815c96711a31Bc65",
@@ -65,7 +65,7 @@ export const config: Record<string, ChainConfig> = {
     usdcName: "Bridged USDC",
   },
   "50312": {
-    usdcAddress: "0x0ED782B8079529f7385c3eDA9fAf1EaA0DbC6a17",
+    usdcAddress: "0x28bec7e30e6faee657a03e19bf1128aad7632a00",
     usdcName: "USDC",
   }
 };
