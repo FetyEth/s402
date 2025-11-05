@@ -1,12 +1,15 @@
-'use client';
-
 import { useState } from 'react';
-import { useAccount } from 'wagmi';
+import { WagmiProvider } from 'wagmi';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import { config } from './wagmi';
 import { Header } from '../components/Header';
-import { RegisterAgentForm } from '../components/register-agent-form';
+import { CreateAgent } from '../components/CreateAgent';
 import { AgentList } from '../components/agent-list';
+import { useAccount } from 'wagmi';
 
-export default function Home() {
+const queryClient = new QueryClient();
+
+function AppContent() {
   const { isConnected } = useAccount();
   const [refreshTrigger, setRefreshTrigger] = useState(0);
 
@@ -40,7 +43,7 @@ export default function Home() {
           </div>
         ) : (
           <div className="space-y-8">
-            <RegisterAgentForm onSuccess={handleAgentCreated} />
+            <CreateAgent onSuccess={handleAgentCreated} />
             
             <div>
               <div className="mb-6">
@@ -81,3 +84,15 @@ export default function Home() {
     </div>
   );
 }
+
+function App() {
+  return (
+    <WagmiProvider config={config}>
+      <QueryClientProvider client={queryClient}>
+        <AppContent />
+      </QueryClientProvider>
+    </WagmiProvider>
+  );
+}
+
+export default App;

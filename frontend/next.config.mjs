@@ -1,9 +1,10 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  output: 'standalone',
   reactStrictMode: true,
-  images: {
-    domains: ['ipfs.io', 'gateway.pinata.cloud'],
+  experimental: {
+    appDir: true,
   },
-}
+};
 
-module.exports = nextConfig
+export default nextConfig;

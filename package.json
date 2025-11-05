@@ -1,4 +1,7 @@
 {
   "name": "s402-monorepo",
-  "private": true
+  "private": true,
+  "dependencies": {
+    "tailwindcss": "^4.1.16"
+  }
 }

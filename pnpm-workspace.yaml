@@ -3,3 +3,4 @@ packages:
   - 'x402/typescript/packages/*'
   - 'x402/examples/typescript/*'
   - 'streams-paywall'
+  - 'frontend/*'
