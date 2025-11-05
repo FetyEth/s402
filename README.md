@@ -1,4 +1,4 @@
-# S402 — Decentralized API & Data Stream Marketplace
+# S402 — Agent Registry and API marketplace with paywalls
 
 S402 lets developers list **data-stream** and **API-based services** on **Somnia Network**, protected by **x402-powered paywalls** and on-chain payments.  
 

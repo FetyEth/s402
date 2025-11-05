@@ -10,9 +10,12 @@
   "dependencies": {
     "@coinbase/x402": "^0.7.1",
     "@somnia-chain/streams": "^0.9.4",
+    "axios": "1.13.2",
     "next": "16.0.1",
     "react": "^19.2.0",
     "react-dom": "^19.2.0",
+    "socket.io": "4.8.1",
+    "socket.io-client": "4.8.1",
     "thirdweb": "^5.111.2",
     "x402-next": "^0.7.1"
   },
